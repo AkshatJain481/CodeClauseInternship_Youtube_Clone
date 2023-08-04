@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> To-Do List</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  background-color: rgb(227, 193, 164);
+  }
+  #app {
+    max-width: 400px;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(223, 223, 223);
+   
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f4f4f4;
+    border-radius: 3px;
+  }
+  button {
+    background-color: #0764bb;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 1px;
+
+  }
+  .title{
+    text-align: center;
+  }
+  #taskInput{
+    margin-left: 17.5%;
+    max-width: 40.5%;
+  }
+  button:hover{
+    background-color: #0084ff;
+  }
+ .deleteBtn{
+
+    background-color: rgba(255, 0, 0, 0.785);
+ }
+ .deleteBtn:hover{
+    background-color: rgb(254, 102, 102);
+ }
+ .tasks{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+ }
+ .clipboard{
+    padding-left:  30px;
+ }
+</style>
+</head>
+<body>
+<div id="app">
+  <h1 class="title">Task List<i class="fa-solid fa-clipboard-list clipboard" style="color: #f5c000;"></i></h1>
+  <input type="text" id="taskInput" placeholder="Enter a task...">
+  <button id="addTaskBtn">Add Task</button>
+  <ul id="taskList"></ul>
+</div>
+<script>
+  const taskInput = document.getElementById('taskInput');
+  const addTaskBtn = document.getElementById('addTaskBtn');
+  const taskList = document.getElementById('taskList');
+
+  addTaskBtn.addEventListener('click', () => {
+    const taskText = taskInput.value.trim();
+    if (taskText !== '') {
+      const li = document.createElement('li');
+      li.innerHTML = `
+      <input type="checkbox">  
+      <span class= "tasks">${taskText}</span>
+        
+        <button class="deleteBtn"><i class="fa-solid fa-trash" style="color: #4a4a4a;"></i></button>
+      `;
+      taskList.appendChild(li);
+      taskInput.value = '';
+
+      const deleteBtn = li.querySelector('.deleteBtn');
+      deleteBtn.addEventListener('click', () => {
+        taskList.removeChild(li);
+      });
+    }
+  });
+</script>
+</body>
+</html>
