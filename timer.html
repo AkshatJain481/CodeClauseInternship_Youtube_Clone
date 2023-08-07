@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Countdown </title>
+</head>
+<style>
+   *{
+    list-style: none;
+    text-decoration: none;
+    
+   }
+    
+  .container{
+    margin: auto;
+    margin-top: 40px;
+  width: 245px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 35px;
+  background-color: rgb(232, 232, 232);
+}
+  .common{
+font-size: 2rem;
+width: 32px;
+height: 36px;
+  }
+  .playbutton{
+    margin-left: 40px;
+    color: #3caf49;
+  }
+  .resetbutton{
+    margin-left: 15px;
+    color: #d10015;
+  }
+  .playbutton:hover{
+    color: #71e47f;
+  }
+  .resetbutton:hover{
+    color: #e73f4f;
+  }
+  .timerr{
+    display: inline-block;
+  }
+
+#inputSection {
+    margin: 50px;
+text-align: center;  
+}
+.for-input{
+    width: 40px;
+}
+.pausebutton{
+    margin-left: 40px;
+    color: #ff422d;
+  }
+  .pausebutton:hover{
+    color: rgb(214, 82, 96);
+  }
+  
+  #sub-nav{
+    font-family: montserrat;
+    text-align: center;
+  }
+  .navli{
+    display: inline-block;
+
+  }
+.navli:hover{
+  background-color: rgb(197, 197, 197);
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+  .li1{
+margin-right: 50px ;
+  }
+  .li2{
+    margin-right: 3.3%;
+  }
+  #maincontainer{
+    margin-top: 180px;
+  }
+  .links{
+    padding:  0px 10px;
+    color: rgb(0, 0, 0);
+    
+  }
+  a.active{
+    background-color: rgb(197, 197, 197);
+  cursor: pointer;
+  border-radius: 10px;
+  }
+</style>
+
+<body>
+  <div id="maincontainer">
+  
+    <ul id = "sub-nav">
+      <li class = "navli li1"><a class = "links active" href = "file:///C:/Users/aksha/Desktop/codeclause%20tasks/timer.html" onclick="Active(0)">Timer</a></li>
+      <li class = "navli li2"><a class = "links" href = "file:///C:/Users/aksha/Desktop/codeclause%20tasks/stopwatch.html" onclick="Active(1)">Stopwatch</a></li>
+    </ul>
+  
+  
+<div class="container">
+    <div class="timerr">
+    <span class=" common c1 " id = "timer">00:00:00</span>
+    
+</div>
+    <i class=" a fa-solid fa-circle-play common playbutton" onclick="startTimer()"></i>
+    <i class=" b fa-solid fa-circle-stop common resetbutton" onclick="resettimer() "></i>
+
+</div>
+
+<div id="inputSection">
+    <label for="hours">Hours:</label>
+    <input class=" for-input" type="number" id="hours" min="0" value="0">
+    <label for="minutes">Minutes:</label>
+    <input class=" for-input" type="number" id="minutes" min="0" max="59" value="1">
+    <label for="seconds">Seconds:</label>
+    <input class=" for-input" type="number" id="seconds" min="0" max="59" value="0">
+    
+  </div>
+</div>
+<p style="text-align: center;">Click square button above to reset the timer!</p>
+</body>
+<script>
+  let links = document.getElementsByClassName('links');
+  function Active(x){
+if(!links[x].classList.contains('active')){
+for(let i = 0; i <2;i++){
+  links[i].classList.remove('active');
+}
+  
+  links[x].classList.add('active');
+
+}
+  }
+   
+  let timerInterval;
+let playbut = document.getElementsByClassName("a");
+function playpause(){
+if(playbut[0].classList.contains('fa-circle-play')){
+  playbut[0].classList.add('fa-circle-pause');
+  playbut[0].classList.add('pausebutton');
+  playbut[0].classList.remove('fa-circle-play');
+  playbut[0].classList.remove('playbutton');
+}
+else if(playbut[0].classList.contains('fa-circle-pause')){
+  playbut[0].classList.add('fa-circle-play');
+  playbut[0].classList.add('playbutton');
+  playbut[0].classList.remove('fa-circle-pause');
+  playbut[0].classList.remove('pausebutton');
+}
+
+}
+
+
+let run = false;
+function resettimer(){
+  if(playbut[0].classList.contains('fa-circle-pause')){
+  playbut[0].classList.add('fa-circle-play');
+  playbut[0].classList.add('playbutton');
+  playbut[0].classList.remove('fa-circle-pause');
+  playbut[0].classList.remove('pausebutton');
+  const hoursInput = document.getElementById("hours");
+  const minutesInput = document.getElementById("minutes");
+  const secondsInput = document.getElementById("seconds");
+  const timerDisplay = document.getElementById("timer");
+
+  let hours = parseInt(hoursInput.value);
+  let minutes = parseInt(minutesInput.value);
+  let seconds = parseInt(secondsInput.value);
+
+  let totalSeconds = hours * 3600 + minutes * 60 + seconds;
+  function updateTimerDisplay() {
+    const hoursDisplay = Math.floor(totalSeconds / 3600).toString().padStart(2, "0");
+    const minutesDisplay = Math.floor((totalSeconds % 3600) / 60).toString().padStart(2, "0");
+    const secondsDisplay = (totalSeconds % 60).toString().padStart(2, "0");
+    timerDisplay.textContent = `${hoursDisplay}:${minutesDisplay}:${secondsDisplay}`;
+    
+  }
+  updateTimerDisplay();
+  
+}
+else if(playbut[0].classList.contains('fa-circle-play')){
+  const hoursInput = document.getElementById("hours");
+  const minutesInput = document.getElementById("minutes");
+  const secondsInput = document.getElementById("seconds");
+  const timerDisplay = document.getElementById("timer");
+
+  let hours = parseInt(hoursInput.value);
+  let minutes = parseInt(minutesInput.value);
+  let seconds = parseInt(secondsInput.value);
+
+  let totalSeconds = hours * 3600 + minutes * 60 + seconds;
+  function updateTimerDisplay() {
+    const hoursDisplay = Math.floor(totalSeconds / 3600).toString().padStart(2, "0");
+    const minutesDisplay = Math.floor((totalSeconds % 3600) / 60).toString().padStart(2, "0");
+    const secondsDisplay = (totalSeconds % 60).toString().padStart(2, "0");
+    timerDisplay.textContent = `${hoursDisplay}:${minutesDisplay}:${secondsDisplay}`;
+    
+  }
+  updateTimerDisplay();
+  
+}
+
+}
+
+function startTimer() {
+playpause();
+if(!run){
+  const hoursInput = document.getElementById("hours");
+  const minutesInput = document.getElementById("minutes");
+  const secondsInput = document.getElementById("seconds");
+  const timerDisplay = document.getElementById("timer");
+
+  let hours = parseInt(hoursInput.value);
+  let minutes = parseInt(minutesInput.value);
+  let seconds = parseInt(secondsInput.value);
+
+  let totalSeconds = hours * 3600 + minutes * 60 + seconds;
+  run = true;
+
+  function updateTimerDisplay() {
+    const hoursDisplay = Math.floor(totalSeconds / 3600).toString().padStart(2, "0");
+    const minutesDisplay = Math.floor((totalSeconds % 3600) / 60).toString().padStart(2, "0");
+    const secondsDisplay = (totalSeconds % 60).toString().padStart(2, "0");
+    timerDisplay.textContent = `${hoursDisplay}:${minutesDisplay}:${secondsDisplay}`;
+  }
+
+  function countdown() {
+    
+    let experiment = document.getElementsByClassName('b');
+    experiment[0].addEventListener('click', () => {
+      clearInterval(timerInterval);
+      run = false;
+      });
+    
+     if (totalSeconds >= 0 && playbut[0].classList.contains('fa-circle-pause')){
+    updateTimerDisplay();
+    totalSeconds--;
+  }
+  
+   if( playbut[0].classList.contains('fa-circle-play')){
+    return;
+  }
+    else if (totalSeconds < 0) {
+      clearInterval(timerInterval);
+      timerDisplay.textContent = "00:00:00";
+      run = false;
+      if(playbut[0].classList.contains('fa-circle-pause')){
+  playbut[0].classList.add('fa-circle-play');
+  playbut[0].classList.add('playbutton');
+  playbut[0].classList.remove('fa-circle-pause');
+  playbut[0].classList.remove('pausebutton');
+}
+    }
+  }
+
+  if (totalSeconds > 0) {
+    timerInterval = setInterval(countdown, 1000);
+  }
+ }
+}   
+    
+</script>
+</html>

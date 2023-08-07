@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Stopwatch </title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  *{
+    
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  #controls {
+    margin: 20px;
+  }
+  .common{
+font-size: 2rem;
+width: 32px;
+height: 36px;
+  }
+  .playbutton{
+    margin-left: 40px;
+    color: #3caf49;
+  }
+  .resetbutton{
+    margin-left: 15px;
+    color: #d10015;
+  }
+  .playbutton:hover{
+    color: #71e47f;
+  }
+  .resetbutton:hover{
+    color: #e73f4f;
+  }
+  .pausebutton{
+    margin-left: 40px;
+    color: #ff422d;
+  }
+  .pausebutton:hover{
+    color: rgb(214, 82, 96);
+  }
+  .container{
+    margin: auto;
+    margin-top: 40px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 35px;
+  background-color: rgb(232, 232, 232);
+}
+#stopwatch{
+  font-size: 2rem;
+    display: inline-block;
+    width: 170px;
+  }
+  #maincontainer{
+    margin-top: 180px;
+  }
+  .links{
+    padding:  0px 10px;
+    color: rgb(0, 0, 0);
+    
+  }
+  a.active{
+    background-color: rgb(197, 197, 197);
+  cursor: pointer;
+  border-radius: 10px;
+  }
+  .li1{
+margin-right: 50px ;
+  }
+  .li2{
+    margin-right: 3.3%;
+  }
+  #sub-nav{
+    font-family: montserrat;
+    text-align: center;
+  }
+  .navli{
+    display: inline-block;
+
+  }
+.navli:hover{
+  background-color: rgb(197, 197, 197);
+  cursor: pointer;
+  border-radius: 10px;
+}
+</style>
+</head>
+<body>
+  <div id="maincontainer">
+    <ul id = "sub-nav">
+      <li class = "navli li1"><a class = "links " href = "file:///C:/Users/aksha/Desktop/codeclause%20tasks/timer.html" onclick="Active(0)">Timer</a></li>
+      <li class = "navli li2"><a class = "links active" href = "file:///C:/Users/aksha/Desktop/codeclause%20tasks/stopwatch.html#" onclick="Active(1)">Stopwatch</a></li>
+    </ul>
+  <div class="container">
+<div id="stopwatch">
+  <span class="common">00:00:00.00</span>
+</div>
+
+<i id="startButton" class=" a fa-solid fa-circle-play common playbutton" onclick="startStopwatch()"></i>
+<i id="resetButton" class=" b fa-solid fa-circle-stop common resetbutton" onclick="resetStopwatch() "></i>
+
+</div>
+</div>
+<script>
+
+  let startTime;
+  let stopwatchInterval;
+  let running = false;
+  let elapsedTime = 0;
+  let playbut = document.getElementsByClassName("a");
+function playpause(){
+if(playbut[0].classList.contains('fa-circle-play')){
+  playbut[0].classList.add('fa-circle-pause');
+  playbut[0].classList.add('pausebutton');
+  playbut[0].classList.remove('fa-circle-play');
+  playbut[0].classList.remove('playbutton');
+}
+else if(playbut[0].classList.contains('fa-circle-pause')){
+  playbut[0].classList.add('fa-circle-play');
+  playbut[0].classList.add('playbutton');
+  playbut[0].classList.remove('fa-circle-pause');
+  playbut[0].classList.remove('pausebutton');
+}
+}
+  function updateStopwatch() {
+    const currentTime = new Date().getTime();
+    const timeDiff = currentTime - startTime + elapsedTime;
+
+    const milliseconds = Math.floor(timeDiff % 1000);
+    const seconds = Math.floor(timeDiff / 1000) % 60;
+    const minutes = Math.floor(timeDiff / 60000) % 60;
+    const hours = Math.floor(timeDiff / 3600000);
+
+    document.getElementById('stopwatch').textContent = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}.${formatMilliseconds(milliseconds)}`;
+   
+  }
+
+  function formatTime(time) {
+    return time.toString().padStart(2, '0');
+  }
+
+  function formatMilliseconds(milliseconds) {
+    return milliseconds.toString().padStart(2, '0');
+  }
+
+  function startStopwatch() {
+    playpause();
+    if (!running) {
+      startTime = new Date().getTime();
+      stopwatchInterval = setInterval(updateStopwatch, 1); // Update every 1 millisecond
+      
+      running = true;
+    } else {
+      clearInterval(stopwatchInterval);
+      elapsedTime += new Date().getTime() - startTime;
+      
+      running = false;
+    }
+  }
+
+  function resetStopwatch() {
+    clearInterval(stopwatchInterval);
+    elapsedTime = 0;
+    document.getElementById('stopwatch').textContent = '00:00:00.00';
+    if(playbut[0].classList.contains('fa-circle-pause')){
+  playbut[0].classList.add('fa-circle-play');
+  playbut[0].classList.add('playbutton');
+  playbut[0].classList.remove('fa-circle-pause');
+  playbut[0].classList.remove('pausebutton');
+}
+    running = false;
+  }
+  let links = document.getElementsByClassName('links');
+  function Active(x){
+if(!links[x].classList.contains('active')){
+for(let i = 0; i <2;i++){
+  links[i].classList.remove('active');
+}
+  
+  links[x].classList.add('active');
+
+}
+  }
+</script>
+</body>
+</html>
+
