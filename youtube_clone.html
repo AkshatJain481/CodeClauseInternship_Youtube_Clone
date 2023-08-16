@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        text-decoration: 0;
+        list-style: none;
+        
+
+    }
+    .upper_container{
+        background-color:white ;
+        
+        position: sticky;
+        top: 0;
+        height: 112px;
+    }
+    .sub_cont{
+        height: 60px;
+        display: flex;
+    }
+     
+    .logo{
+        width: 90px;
+        height: 20px;
+        margin-left: 16px;
+        margin-top: 18.5px;
+        
+    }
+    .menu_bar{
+        height: 24px;
+        width: 24px;
+        font-size: 24px;
+       margin-top: 7px;
+       margin-left: 16px;
+        padding: 8px;
+        cursor: pointer;
+    }
+    .menu_bar:hover{
+        background-color: rgb(232, 232, 232);
+        border-radius: 20px;
+    }
+  
+    .IN{
+        font-size: 0.6rem;
+        font-family:'Segoe UI';
+        padding-top: 11.5px;
+        padding-left: 4px;
+    }
+    
+
+.searchbar{
+    margin-left: 267px;
+    margin-top: 8px;
+    height: 37.5px;
+    width: 535px;
+    border-radius: 20px 0px 0px 20px;
+    border: 1px solid rgba(173, 173, 173, 0.575);
+    
+}
+::placeholder{
+    
+    padding-left: 15px;
+    
+    
+    font-size: 1.0rem;
+    font-family:  Roboto;
+}
+.searchbutton{
+    height: 39.5px;
+    margin-top: 8px;
+border-radius: 0px 19.75px 19.75px 0px ;
+border: 1px solid rgba(173, 173, 173, 0.575);
+border-left: 0px;
+background-color: rgba(237, 237, 237, 0.452);
+}
+.searchbutton:hover{
+    cursor: pointer;
+    background-color:rgb(232, 232, 232) ;
+}
+.s{
+    padding: 6px 21px 6px 17.5px;
+}
+.fa-microphone{
+    font-size: 1.1rem;
+}
+
+.micbutton{
+    border: 0px;
+    height: 40px;
+    margin-top: 8px;
+    margin-left: 16.5px;
+    padding: 0px 13px ;
+    border-radius: 20px;
+}
+.micbutton:hover{
+    cursor: pointer;
+    background-color: rgb(232, 232, 232);
+}
+.settings_bar{
+    margin-left:277px;
+    margin-top: 20px;
+}
+.sign_in{
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 26px;
+    height: 35px;
+    width: 97px;
+    border: 1px solid rgba(173, 173, 173, 0.575);
+    border-radius: 17.5px;
+    color: blue;
+    font-family:  Roboto;
+    display: flex;
+    
+}
+.sign_in:hover{
+    background-color: rgba(126, 152, 255, 0.233);
+}
+.sign_in_symbol{
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+}
+.sign_in_text{
+    padding-top: 8px;
+    
+}
+.items
+{ 
+    display: flex;
+    font-family:  Roboto;
+    margin-top: 8px;
+    margin-left: 12px;
+}
+.list{
+    cursor: pointer;
+    font-size: 0.88rem;
+    background-color: rgba(228, 228, 228, 0.544);
+    color: black;
+   padding: 8px 12px;
+   
+   padding-bottom: 7.5px; 
+   border-radius: 8px; 
+}
+.active{
+    padding: 8px 12px;
+   padding-bottom: 7.5px; 
+   border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    background-color: #000000;
+    color: white; 
+    
+}
+.common_list{
+        margin-left: 12px;
+        
+    }
+    .list:hover{
+        background-color: rgb(232, 232, 232);
+    }
+  .video{
+    height: 270px;
+    width: 480px;
+    margin-left: 15px;
+    margin-top: 24px;
+    border-radius:12px ;
+  } 
+  .video:hover{
+    border-radius: 0px;
+  }
+  
+  .lower_sub_cont{
+    display: flex;
+    margin-left: 9px;
+    margin-right: 25px;
+  }
+  
+  .Image{
+    height: 36px;
+    width: 36px;
+    border-radius: 18px;
+    margin-right: 12px;
+  }
+  .image_cont{
+    display: inline-flex;
+    margin-left: 24px;
+    margin-top: 9px;
+    font-family: "Roboto","Arial",sans-serif;
+   font-size: 0.95rem;
+font-weight: 500;
+   
+    
+    
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+  .video_title{
+    width: 408px;
+    
+  }
+  .channel{
+    margin-top: 4px;
+    
+    font-size: 14px;
+    font-family: Roboto, Arial, sans-serif;
+    height: 20px;
+    width: 408px;
+   margin-left: 72px;
+   font-weight: 400;
+   color: #606060;
+  }
+  .channel_custom{
+    
+    margin-top: 7.5px;
+    font-size: 14px;
+    font-family: Roboto, Arial, sans-serif;
+    height: 20px;
+    width: 408px;
+   margin-left: 72px;
+   font-weight: 400;
+   color: #606060;
+  }
+  
+  .sub_views1{
+    margin-top: 17px;
+  }
+  .views{
+    display: inline-flex;
+    
+    font-size: 14px;
+    font-family: Roboto, Arial, sans-serif;
+    height: 20px;
+    width: 408px;
+   margin-left: 72px;
+   font-weight: 400;
+   color: #606060;
+  }
+ .sub_dot{
+   color: #606060;
+   font-size: 0.4rem;
+height: 4.8px;
+width: 4.8px;
+
+ background-color: #606060;
+ border-radius: 3px;
+}
+
+.dot:before {
+    content: "•";
+    margin: 0 0px;
+    color: #606060;
+}
+.video_info{
+    display: inline-block;
+}
+.video_info1{
+    display: inline-block;
+    margin-left: 10px;
+}
+.lower_sub_cont1{
+margin-top: 13px;
+}
+</style>
+<body>
+  <div class="main_container">
+    <div class="upper_container ">
+<div class="sub_cont">
+    <i class="material-symbols-outlined menu_bar">menu</i><img src="youtube_logo1.jpg" class="logo"><p class="IN">IN</p>
+    <input class="searchbar" type="text" placeholder="Search">
+    <button class="searchbutton"><i class="material-symbols-outlined s"> search</i></button>
+    <button class="micbutton"><i class="fa-solid fa-microphone" style="color: #000000;"></i></button>
+    <i class="fa-solid fa-ellipsis-vertical settings_bar" style="color: #000000;"></i>
+    <button class="sign_in"><i class="material-symbols-rounded sign_in_symbol">account_circle</i><b class="sign_in_text">Sign in</b></button>
+</div>
+<div class="sub_cont2">
+    <ul class="items">
+    <li class="common_list active a" onclick="commonlist(0)">All</li>
+    <li class="list common_list a" onclick="commonlist(1)">Music</li>
+    <li class="list common_list a" onclick="commonlist(2)">Computer Programming</li>
+    <li class="list common_list a" onclick="commonlist(3)">Gaming</li>
+    <li class="list common_list a" onclick="commonlist(4)">Live</li>
+    <li class="list common_list a" onclick="commonlist(5)">News</li>
+    <li class="list common_list a" onclick="commonlist(6)">Comedy</li>
+    <li class="list common_list a" onclick="commonlist(7)">Trending</li>
+    <li class="list common_list a" onclick="commonlist(8)">Movies</li>
+    <li class="list common_list a" onclick="commonlist(9)">Mathematics</li>
+    <li class="list common_list a" onclick="commonlist(10)">Javascript</li>
+    <li class="list common_list a" onclick="commonlist(11)">Motivation</li>
+    <li class="list common_list a" onclick="commonlist(12)">Entertainment</li>
+    <li class="list common_list a" onclick="commonlist(13)">Educational</li>
+    <li class="list common_list a" onclick="commonlist(14)">Politics</li>
+    <li class="list common_list a" onclick="commonlist(15)">Cars</li>
+    </ul>
+</div>
+</div>
+  <div class="lower_sub_cont">
+<iframe width="560" height="315" class = "video " src="https://www.youtube.com/embed/nGhKIC_7Mkk?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" class="video" src="https://www.youtube.com/embed/b_EoeUotngY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315"  class="video" src="https://www.youtube.com/embed/t0Q2otsqC4I?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+</div>
+<div class="video_info">
+<span class="image_cont"><img src="apna_clg.jpg" class="Image"><p class="video_title">Building AMAZON Clone for Beginners | Project using HTML & CSS</p>
+          
+</span>
+<div class="channel"><a class="sub_views">Apna College </a></div>
+<div class="views"><a class="sub_views">549K <span class="dot">  2 months ago</span></div>
+</div>
+
+<div class="video_info1">
+    <span class="image_cont"><img src="news.jpg" class="Image"><p class="video_title">PM Modi ने No Confidence Motion पर बोलते हुए Congress के चुनाव चिन्ह पर क्या बोल गए? | Rahul Gandhi</p>
+              
+    </span>
+    <div class="channel_custom"><a class="sub_views ">News18 Rajasthan </a></div>
+    <div class="views"><a class="sub_views">30K <span class="dot">  1 day ago</span></div>
+</div>
+
+<div class="video_info1">
+    <span class="image_cont"><img src="tom_jerry.jpg" class="Image"><p class="video_title">Tom & Jerry | Tom & Jerry in Full Screen | Classic Cartoon Compilation | WB Kids</p>
+              
+    </span>
+    <div class="channel"><a class="sub_views">WB Kids </a></div>
+    <div class="views"><a class="sub_views">450M <span class="dot">  1 year ago</span></div>
+</div>
+<div class="lower_sub_cont lower_sub_cont1">
+
+<iframe width="560" height="315" class = "video"src="https://www.youtube.com/embed/UC26n0Ol99g?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="560" height="315" class = "video" src="https://www.youtube.com/embed/ZMrc17yO-Ac?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="560" height="315" class = "video" src="https://www.youtube.com/embed/sgy5FGjSAPo?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div class="video_info">
+    <span class="image_cont"><img src="flash.jpg" class="Image"><p class="video_title">Flash Vs Suicide Squad Fight Scene 4K (2023) - Suicide Squad Kill The Justice League</p>
+              
+    </span>
+    <div class="channel"><a class="sub_views">GameClips </a></div>
+    <div class="views"><a class="sub_views">1.2M <span class="dot">  5 months ago</span></div>
+    </div>
+
+    <div class="video_info1">
+        <span class="image_cont"><img src="netflix_img.jpg" class="Image"><p class="video_title">7 Best Munna Circuit Moments | Sanjay Dutt, Arshad Warsi | Netflix India</p>
+                  
+        </span>
+        <div class="channel"><a class="sub_views">Netflix India </a></div>
+        <div class="views"><a class="sub_views">250K <span class="dot">  1 year ago</span></div>
+    </div>
+
+    <div class="video_info1">
+        <span class="image_cont"><img src="prime.jpg" class="Image"><p class="video_title">Try not to laugh | Bass Kar Bassi, Tathastu, Comicstaan | Prime Video India</p>
+                  
+        </span>
+        <div class="channel"><a class="sub_views">Prime Video India </a></div>
+        <div class="views"><a class="sub_views">1M <span class="dot">  2 weeks ago</span></div>
+    </div>
+
+
+
+</div>  
+</body>
+<script>
+    let list = document.getElementsByClassName("a");
+
+    function commonlist(x){
+for(let i = 0;i<=15;i++){
+list[i].classList.remove('active');
+}
+for(let i = 0;i<=15;i++){
+list[i].classList.remove('list');
+}
+for(let i = 0;i<=15;i++){
+    if(i == x){
+        continue;
+    }
+list[i].classList.add('list');
+}
+list[x].classList.add('active');
+
+    }
+</script>
+</html>
